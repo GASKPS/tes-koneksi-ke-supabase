@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tes Supabase</title>
+</head>
+<body>
+  <h3 id="status">Cek koneksi...</h3>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const supabaseUrl = 'https://afyqquoxqbnuaijhyszx.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmeXFxdW94cWJudWFpamh5c3p4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNTI5NzgsImV4cCI6MjA4MzcyODk3OH0.Sa-dNSosI7Ol_w-_HZA3B6welLSLZHwKX9hMt9fZCQM'
+
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+
+    async function test() {
+      const { error } = await supabase.auth.getSession()
+
+      document.getElementById('status').innerText =
+        error ? '❌ Koneksi gagal' : '✅ Koneksi berhasil'
+    }
+
+    test()
+  </script>
+</body>
