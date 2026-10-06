@@ -1,17 +1,13 @@
-# Mess Karyawan · Siap Upload V5
+# Mess Karyawan · Siap Upload V6
 
-Paket ini adalah hasil build React, Vite, dan Tailwind. Konfigurasi proyek Supabase jricrpiubdoailjoelft sudah terpasang.
+Hasil build React dengan foto login, ikon utuh, pencarian kamar, popup pengantaran tengah, pengantaran massal, profil bertab dan pengaman versi penempatan.
 
-1. Ekstrak ZIP. Unggah seluruh isi folder ini ke root repository GitHub, sehingga index.html, coba.html, dan assets terlihat langsung.
-2. Pilih Settings → Pages → Deploy from a branch → main → /(root) → Save.
-3. Buka alamat web yang ditampilkan GitHub. Tambahkan /coba.html untuk mode uji coba tanpa login.
-4. Jika database V3/V4 sudah terpasang, jalankan hanya supabase/update_v5.sql pada SQL Editor proyek yang sama. Data dan akun lama tetap dipakai; fungsi mess-create-user tetap sama.
-5. Untuk pemasangan pertama, ikuti PANDUAN.pdf: jalankan supabase_setup.sql lalu update_v5.sql, buat Administrator, dan pasang fungsi akun.
+1. Ekstrak ZIP. Unggah seluruh isi folder ke root repository, sehingga index.html, coba.html, assets/, PANDUAN.html terlihat langsung.
+2. Settings → Pages → Deploy from a branch → main → /(root) → Save.
+3. Database V5 sudah terpasang: jalankan SELURUH supabase/update_v6.sql, pilih Run without RLS jika diminta. Akun dan data lama tetap dipakai.
+4. Perbarui mess-create-user dan pasang mess-manage-user dari folder supabase/functions/. Verifikasi JWT tetap aktif. Langkah lengkap pada PANDUAN.pdf/HTML.
+5. Buka alamat web GitHub; coba.html untuk uji coba tanpa login. Folder assets dan foto login wajib ikut diunggah.
 
-React dibuka melalui URL HTTP/HTTPS; membuka HTML melalui file:// tidak menjalankan modulnya. Folder assets harus ikut diunggah.
+Database baru: supabase_setup.sql → update_v5.sql → update_v6.sql, lalu akun pertama dan fungsi. Mengunggah supabase/ tidak menjalankan SQL atau memasang fungsi.
 
-Untuk mengubah komponen, gunakan paket Mess_Karyawan_React_V5.zip, edit src/, dan build ulang. ZIP sumber memiliki pilihan publikasi otomatis melalui GitHub Actions.
-
-Fitur V5: impor Excel dengan pratinjau, laporan PDF/Excel sesuai filter, tracking perbaikan kamar, filter tanggal Riwayat WIT, dan popup terpusat. Bentuk kartu kamar dipertahankan.
-
-Data contoh hanya disimpan pada browser. Versi utama meminta login Supabase. Mengunggah folder supabase ke GitHub tidak menjalankan SQL atau memasang Edge Function.
+Kode sumber terpisah tersedia di Mess_Karyawan_React_V6.zip. Paket ini tidak menjalankan JSX mentah; index.html hanya pintu masuk hasil build. Buka melalui HTTP/HTTPS, bukan klik ganda file HTML.
