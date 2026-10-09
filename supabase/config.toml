@@ -1,0 +1,6 @@
+# CLI deployment settings. The Dashboard equivalent is Verify JWT / Enforce JWT.
+[functions.mess-create-user]
+verify_jwt = true
+
+[functions.mess-manage-user]
+verify_jwt = true
