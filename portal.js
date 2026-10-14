@@ -76,9 +76,15 @@
     else if (!event.shiftKey && document.activeElement === items.at(-1)) { event.preventDefault(); items[0].focus(); }
   });
   window.matchMedia('(min-width:901px)').addEventListener('change', event => { if (event.matches) toggleMenu(false); });
+  function syncAgendaLabel(){
+    const label=window.Akses.canWrite()?'Tamu & Catatan':'Data Tamu',link=document.querySelector('[data-agenda-label]');if(link)link.textContent=label;
+    if(location.hash==='#agenda'){$('page-label').textContent=label;document.title=label+' · GA Services';}
+  }
+  window.Akses.ready.then(syncAgendaLabel);
   function route() {
     const pages = { tracking: ['tracking-page', 'Tracking Dokumen'], 'link-kerja': ['links-page', 'Link Kerja'], karyawan: ['employees-page', 'Data Karyawan'], 'ht-hp': ['devices-page', 'Data Perangkat'], mess: ['mess-admin-page','Update Data Mess'], profil: ['profile-page', 'Profil & Pengaturan'], agenda: ['agenda-page','Tamu & Catatan'], cuti: ['cuti-page','Tahunan & Extra'] };
     pages.stok = ['stok-page', 'Stok Barang & Opname'];
+    pages.agenda[1]=window.Akses.canWrite()?'Tamu & Catatan':'Data Tamu';
     const requested = window.location.hash.slice(1);
     const routeName = Object.hasOwn(pages, requested) ? requested : 'link-kerja';
     Object.entries(pages).forEach(([name, page]) => { $(page[0]).hidden = name !== routeName; });
@@ -276,6 +282,7 @@
   setInterval(updateDate, 60000);
   window.addEventListener('hashchange',()=>refresh().catch(error=>showToast(error.message)));
   document.addEventListener('akses:berubah',()=>{
+    syncAgendaLabel();
     listRequest++;const p=window.Akses.profile,key=p?[p.id,p.peran,p.office_id,p.aktif,p.akses_portal].join('|'):'';
     if(key!==accessKey){accessKey=key;documents=[];snapshot={total:0,ringkasan:{}};selectedId=null;detailDocument=null;editingDocument=null;historyRequest++;
       for(const id of ['document-dialog','detail-dialog','movement-dialog'])if($(id).open)closeDialog(id);
@@ -283,6 +290,5 @@
     if(p)refresh().catch(error=>showToast(error.message));
   });
   document.addEventListener('data:muat-ulang',()=>refresh().catch(error=>showToast(error.message)));
-  $('refresh-data').addEventListener('click',()=>document.dispatchEvent(new CustomEvent('data:muat-ulang')));
   route(); fillStatuses(); updateDate(); refresh().catch(error => showToast(error.message));
 })();

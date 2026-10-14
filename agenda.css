@@ -47,3 +47,38 @@ body[data-area="portal"] .agenda-count{font-size:.875rem}
  body[data-area="portal"] .agenda-row-actions .button{min-height:44px;padding-left:16px;padding-right:16px}
 }
 @media(max-width:480px){body[data-area="portal"] .agenda-detail-fields{grid-template-columns:1fr}body[data-area="portal"] .agenda-row-status{max-width:115px}}
+
+/* Data Tamu dalam tabel: judul kolom tetap terlihat saat menggulir. */
+body[data-area="portal"] .guest-sheet-scroll{max-width:100%;max-height:min(480px,65dvh);overflow:auto;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);overscroll-behavior:contain;scrollbar-gutter:stable}
+body[data-area="portal"] .guest-sheet-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body[data-area="portal"] .guest-sheet{width:100%;min-width:940px;table-layout:fixed;border-collapse:separate;border-spacing:0;color:var(--text);font-size:14px;line-height:1.5}
+body[data-area="portal"] .guest-sheet-admin{min-width:1040px}
+body[data-area="portal"] .guest-sheet col:nth-child(1){width:52px}
+body[data-area="portal"] .guest-sheet col:nth-child(2){width:200px}
+body[data-area="portal"] .guest-sheet col:nth-child(3){width:165px}
+body[data-area="portal"] .guest-sheet col:nth-child(4){width:210px}
+body[data-area="portal"] .guest-sheet col:nth-child(5){width:165px}
+body[data-area="portal"] .guest-sheet col:nth-child(6){width:135px}
+body[data-area="portal"] .guest-sheet col:nth-child(7){width:92px}
+body[data-area="portal"] .guest-sheet th,body[data-area="portal"] .guest-sheet td{padding:12px 14px;text-align:left;vertical-align:middle;border-right:1px solid var(--line);border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+body[data-area="portal"] .guest-sheet th{position:sticky;top:0;z-index:2;background:var(--surface-2,#eff3f7);color:var(--text);font-size:13px;font-weight:600;box-shadow:0 1px 0 var(--line-strong);white-space:nowrap}
+body[data-area="portal"] .guest-sheet th:first-child,body[data-area="portal"] .guest-sheet .guest-sheet-number{text-align:right;font-variant-numeric:tabular-nums}
+body[data-area="portal"] .guest-sheet .guest-sheet-number{color:var(--muted)}
+body[data-area="portal"] .guest-sheet th:last-child,body[data-area="portal"] .guest-sheet td:last-child{border-right:0}
+body[data-area="portal"] .guest-sheet tbody tr:last-child td{border-bottom:0}
+body[data-area="portal"] .guest-sheet tbody tr:nth-child(even){background:var(--surface-2,#f7f9fb)}
+body[data-area="portal"] .guest-sheet tbody tr:hover{background:var(--accent-soft)}
+body[data-area="portal"] .guest-sheet .guest-group-start td{border-top:1px solid var(--line-strong)}
+body[data-area="portal"] .guest-sheet-name{font-weight:550}
+body[data-area="portal"] .guest-sheet-date{white-space:nowrap;font-size:13px}
+body[data-area="portal"] .guest-sheet-status{font-size:13px;font-weight:500}
+body[data-area="portal"] .guest-sheet-detail{min-height:36px;padding:6px 10px;border:1px solid var(--line-strong);border-radius:5px;background:var(--surface);color:var(--text);font-size:13px;line-height:1.5}
+body[data-area="portal"] .guest-sheet-detail:hover{border-color:var(--accent)}
+body[data-area="portal"] .guest-sheet-detail:disabled{opacity:.5;cursor:wait}
+body[data-area="portal"] .guest-more{display:flex;justify-content:center;padding:22px 0 8px}
+body[data-area="portal"] .guest-more .button{min-height:44px;min-width:170px;padding:10px 22px}
+body[data-area="portal"] .agenda-toolbar #agenda-status-field{min-width:150px}
+body[data-area="portal"] .agenda-toolbar :is(#agenda-from-field,#agenda-to-field){min-width:155px}
+body[data-area="portal"] .agenda-toolbar input[type="date"]{width:100%}
+html[data-theme="dark"] body[data-area="portal"] .guest-sheet-scroll:focus-visible{outline-color:#96b9dc}
+@media(max-width:650px){body[data-area="portal"] .guest-sheet-detail{min-height:44px}body[data-area="portal"] .agenda-toolbar :is(#agenda-from-field,#agenda-to-field){min-width:0;flex:1 1 calc(50% - 8px)}}
